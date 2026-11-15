@@ -47,15 +47,15 @@ jobs:
           $exe = Get-ChildItem -Path "src-tauri/target/release/bundle/nsis" -Filter "*.exe" | Select-Object -First 1
           $msi = Get-ChildItem -Path "src-tauri/target/release/bundle/msi" -Filter "*.msi" | Select-Object -First 1
           if (-not $exe -or -not $msi) { throw "Expected NSIS EXE and MSI installers were not produced." }
-          Copy-Item $exe.FullName "release-assets/MarketView-Setup-3.3.exe"
-          Copy-Item $msi.FullName "release-assets/MarketView-3.3.msi"
+          Copy-Item $exe.FullName "release-assets/MarketView-Setup-3.4.exe"
+          Copy-Item $msi.FullName "release-assets/MarketView-3.4.msi"
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "V3.3"
-          name: "MarketView 3.3 — Windows"
+          tag_name: "V3.4"
+          name: "MarketView 3.4 — Windows"
           body: |
-            MarketView 3.3 adds Alpaca-powered IEX live trade prices, 1-minute intraday charts, configurable chart refresh, and secure API credential storage.
+            MarketView 3.4 adds Alpaca-powered IEX live trade prices, 1-minute intraday charts, configurable chart refresh, and secure API credential storage.
           files: release-assets/*
           overwrite_files: true
           fail_on_unmatched_files: true
