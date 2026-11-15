@@ -128,7 +128,19 @@ async fn get_market_quote(symbol: String) -> Result<MarketQuote, String> {
     let intraday_bars = intraday_payload["bars"].as_array().cloned().unwrap_or_default();
     let intraday_closes: Vec<f64> = intraday_bars.iter().filter_map(|bar| bar["c"].as_f64()).collect();
     let has_intraday_data = !intraday_closes.is_empty();
-    let current_price = intraday_closes.last().copied().unwrap_or_else(|| *closes.last().unwrap_or(&0.0));
+
+    // Use the latest IEX trade for the headline price; minute bars remain the chart history.
+    let latest_trade_url = format!("https://data.alpaca.markets/v2/stocks/{symbol}/trades/latest?feed=iex");
+    let latest_trade_price = match headers(client.get(latest_trade_url)).send().await {
+        Ok(response) if response.status().is_success() => {
+            response.json::<serde_json::Value>().await.ok()
+                .and_then(|payload| payload["trade"]["p"].as_f64())
+        }
+        _ => None,
+    };
+    let current_price = latest_trade_price
+        .or_else(|| intraday_closes.last().copied())
+        .unwrap_or_else(|| *closes.last().unwrap_or(&0.0));
     if current_price <= 0.0 {
         return Err("Alpaca did not return a usable price for this symbol.".to_string());
     }
