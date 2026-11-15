@@ -248,8 +248,10 @@ body{
 
 /* Personal settings, accessibility and Royal typography */
 :root[data-font="royal"] .page-heading h1,:root[data-font="royal"] .banner-copy h2,:root[data-font="royal"] .surface h3,:root[data-font="royal"] .section-title h3,:root[data-font="royal"] .entry-modal h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;letter-spacing:-.02em}
-:root[data-text-size="large"]{font-size:17px}:root[data-text-size="larger"]{font-size:18px}
-:root[data-text-size="large"] .muted,:root[data-text-size="large"] .page-heading p,:root[data-text-size="large"] .record-meta,:root[data-text-size="large"] .form-grid label,:root[data-text-size="larger"] .muted,:root[data-text-size="larger"] .page-heading p,:root[data-text-size="larger"] .record-meta,:root[data-text-size="larger"] .form-grid label{font-size:1.08em;line-height:1.75}
+:root[data-text-size="normal"]{font-size:16px}:root[data-text-size="large"]{font-size:19px}:root[data-text-size="larger"]{font-size:22px}
+:root[data-text-size="large"] .muted,:root[data-text-size="large"] .page-heading p,:root[data-text-size="large"] .record-meta,:root[data-text-size="large"] .form-grid label{font-size:1.16em;line-height:1.75}
+:root[data-text-size="larger"] .muted,:root[data-text-size="larger"] .page-heading p,:root[data-text-size="larger"] .record-meta,:root[data-text-size="larger"] .form-grid label{font-size:1.32em;line-height:1.8}
+.text-size-preview{display:block;margin-top:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text);font-weight:650;line-height:1.35}.text-size-preview.size-normal{font-size:14px}.text-size-preview.size-large{font-size:20px}.text-size-preview.size-larger{font-size:27px}
 :root[data-high-contrast="true"]{--text:#fff;--muted:#e0e4eb;--line:color-mix(in srgb,var(--accent) 48%,#fff)}
 :root[data-high-contrast="true"] .muted,:root[data-high-contrast="true"] .record-meta,:root[data-high-contrast="true"] .app-footer{color:#e2e5eb}
 :root[data-enhanced-focus="true"] :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
