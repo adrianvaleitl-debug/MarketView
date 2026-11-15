@@ -127,6 +127,7 @@ async fn get_market_quote(symbol: String) -> Result<MarketQuote, String> {
         .map_err(|_| "Alpaca intraday response could not be read.".to_string())?;
     let intraday_bars = intraday_payload["bars"].as_array().cloned().unwrap_or_default();
     let intraday_closes: Vec<f64> = intraday_bars.iter().filter_map(|bar| bar["c"].as_f64()).collect();
+    let has_intraday_data = !intraday_closes.is_empty();
     let current_price = intraday_closes.last().copied().unwrap_or_else(|| *closes.last().unwrap_or(&0.0));
     if current_price <= 0.0 {
         return Err("Alpaca did not return a usable price for this symbol.".to_string());
@@ -144,8 +145,8 @@ async fn get_market_quote(symbol: String) -> Result<MarketQuote, String> {
         volumes,
         intraday_closes,
         currency: "USD".to_string(),
-        market_state: "ALPACA IEX".to_string(),
-        data_source: "Alpaca · IEX real-time feed".to_string(),
+        market_state: if has_intraday_data { "ALPACA IEX" } else { "DAILY FALLBACK" }.to_string(),
+        data_source: if has_intraday_data { "Alpaca · IEX real-time feed" } else { "Alpaca · daily fallback" }.to_string(),
         last_updated: Utc::now().to_rfc3339(),
     })
 }
