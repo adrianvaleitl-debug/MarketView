@@ -1,4 +1,4 @@
-# MarketView 2.9 3.0 — Adrian Vale
+# MarketView 3.3 — Adrian Vale
 
 A market research and risk-planning desktop workspace, rebuilt with React, TypeScript and Tauri 2. The previous Python UI and application implementation are not included.
 
@@ -37,7 +37,7 @@ React 18 · TypeScript · Vite · Tauri 2 · Rust · reqwest · Alpaca Market Da
 Website: https://adrianvaleitl-debug.github.io/Adrian-Vales-Projects/
 Discord: https://discord.gg/3TQcf6DwvT
 
-## MarketView 2.9.0
+## MarketView 3.3.0
 
 - Added a first-launch investment-risk and no-financial-advice acknowledgement.
 - Added configurable links to open watchlist and scanner symbols in a preferred trading platform.
