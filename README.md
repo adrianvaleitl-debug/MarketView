@@ -34,11 +34,12 @@ Watchlists, scan snapshots, alerts, plans and journal entries are stored locally
 ## Technology
 React 18 · TypeScript · Vite · Tauri 2 · Rust · reqwest · Alpaca Market Data API
 
-Website: https://adrianvaleitl-debug.github.io/Adrian-Vales-Projects/\nGitHub: https://github.com/adrianvaleitl-debug/MarketView
+Portfolio: https://adrianvaleitl-debug.github.io/Adrian-Vales-Projects/
+GitHub: https://github.com/adrianvaleitl-debug/MarketView
 Discord: https://discord.gg/3TQcf6DwvT
 
 ## MarketView 3.4.0
 
-- Added a first-launch investment-risk and no-financial-advice acknowledgement.
-- Added configurable links to open watchlist and scanner symbols in a preferred trading platform.
-- Renamed the product MarketView and introduced a matching royal-gold M app icon.
+- Added selected-currency conversion for live prices and chart history.
+- Improved the distinction and clarity of text-size settings.
+- Retained the first-launch investment-risk acknowledgement and configurable external trading-platform links.
